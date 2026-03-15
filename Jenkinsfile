@@ -10,9 +10,13 @@ pipeline {
         }
 
         stage(test) {
-            steps {
-                echo "Testing"
+            agent {
+                label  'app-slave'
             }
+            steps {
+                echo "print hte hostname "
+                sh 'hostname -i'        
+                  }
         }
 
         stage(hostname){
