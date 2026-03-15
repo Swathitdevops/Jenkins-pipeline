@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages{
-        stage (build) {
+        stage ('build') {
             steps{
 
             echo "This is a build stage"
@@ -9,18 +9,18 @@ pipeline {
         }
         }
 
-      stage (groovy script) {
+      stage ('groovy script') {
         steps {
             script{
                 def course = "k8s"
 
-                if (course == "k8s") {
+                if (course == "k8s") 
 
-                println "Thanks for enrolling ${course} course"
-                }
-                else {
-                println "Do enroll into ${course} course"
-                }
+                println ("Thanks for enrolling ${course} course")
+                
+                else 
+                println ("Do enroll into ${course} course")
+                
             }
 
         }
