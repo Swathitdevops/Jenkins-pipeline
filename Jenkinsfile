@@ -1,30 +1,28 @@
 pipeline {
-    agent {
-        label 'dev-slave'
-        }
+    agent any
     stages{
-        stage(build) {
+        stage (build) {
             steps{
-                echo "Hello world"
-            }
+
+            echo "This is a build stage"
+            sh "hostname-i"
+        }
         }
 
-        stage(test) {
-            agent {
-                label  'app-slave'
+      stage (groovy script) {
+        steps {
+            script{
+                def course = "k8s"
+
+                if (course == "k8s")
+                println "Thanks for enrolling ${course} course"
+
+                else
+                println "Do enroll into ${course} course"
             }
-            steps {
-                echo "print hte hostname "
-                sh 'hostname -i'        
-                  }
+
         }
 
-        stage(hostname){
-            steps {
-               sh 'hostname -i'
-            }
-        }
-            
+      }
     }
-    
 }
