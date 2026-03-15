@@ -1,30 +1,30 @@
 pipeline {
-    agent any 
-     
-        tools {
-    maven 'Maven-3.8.9'
-}
-     
-   
+    agent {
+        label 'dev-slave'
+        }
     stages{
-
-        stage('Mavendefault') {
+        stage(build) {
             steps{
-                echo "hello Maven default version"
-
-                sh 'mvn -version'
+                echo "Hello world"
             }
         }
 
-        stage('Mavencustom') {
-            tools {
-                java 'Java-17'
+        stage(test) {
+            agent {
+                label  'app-slave'
             }
-            steps{
-                echo "hello Maven section this is custom java version"
+            steps {
+                echo "print hte hostname "
+                sh 'hostname -i'        
+                  }
+        }
 
-                sh 'mvn -version'
+        stage(hostname){
+            steps {
+               sh 'hostname -i'
             }
         }
+            
     }
+    
 }
