@@ -10,7 +10,11 @@ pipeline {
         }
 
       stage ('groovy script') {
+          agent {
+              label - 'app-slave'
+          }
         steps {
+            sh 'hostname -i'
             script{
                 def course = "k8s"
 
