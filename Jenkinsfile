@@ -1,38 +1,19 @@
 pipeline {
-    
-    agent any
-
+    agent any 
+     
+        tools {
+    maven 'Maven-3.8.9'
+}
+     
+   
     stages{
-        stage ('build') {
-            
-            steps {
 
-            echo "This is a build stage"
-            sh 'hostname -i'
-        }
-        }
+        stage(Maven) {
+            steps{
+                echo "helPrint Maven version"
 
-      stage ('groovy script') {
-          agent {
-              label 'app-slave'
-          }
-        steps {
-            sh 'hostname -i'
-            script{
-                def course = "k8s"
-
-                if (course == "k8s") 
-
-                println ("Thanks for enrolling ${course} course")
-                
-                else 
-                println ("Do enroll into ${course} course")
-                
+                sh 'mvn -version'
             }
-
         }
-
-      }
     }
-
 }
