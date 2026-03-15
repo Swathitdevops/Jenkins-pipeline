@@ -1,24 +1,26 @@
 pipeline {
-    agent any
-
-       stages {
-        stage('Build') {
-            steps {
-                echo 'Building the application Modified by swathi'
+    agent {
+        label 'dev-slave'
+        }
+    stages{
+        stage(build) {
+            steps{
+                echo "Hello world"
             }
         }
 
-        stage('Test') {
+        stage(test) {
             steps {
-                echo 'Running tests...'
+                echo "Testing"
             }
         }
 
-        stage('Deploy') {
+        stage(hostname){
             steps {
-                echo 'Deploying application...'
+               sh 'hostname -i'
             }
         }
+            
     }
-
+    
 }
