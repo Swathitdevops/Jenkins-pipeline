@@ -8,7 +8,7 @@ pipeline {
    
     stages{
 
-        stage(Maven) {
+        stage('Maven') {
             steps{
                 echo "helPrint Maven version"
 
