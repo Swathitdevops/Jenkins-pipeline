@@ -12,7 +12,7 @@ pipeline {
       stage ('groovy script') {
         steps {
             script{
-                def course = "k9s"
+                def course = "k8s"
 
                 if (course == "k8s") 
 
