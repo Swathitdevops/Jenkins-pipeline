@@ -14,7 +14,7 @@ pipeline {
 
       stage ('groovy script') {
           agent {
-              label - 'app-slave'
+              label 'app-slave'
           }
         steps {
             sh 'hostname -i'
