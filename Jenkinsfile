@@ -5,7 +5,7 @@ pipeline {
             steps{
 
             echo "This is a build stage"
-            sh 'hostname -i'
+         
         }
         }
 
