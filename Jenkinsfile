@@ -8,9 +8,20 @@ pipeline {
    
     stages{
 
-        stage('Maven') {
+        stage('Mavendefault') {
             steps{
-                echo "helPrint Maven version"
+                echo "hello Maven default version"
+
+                sh 'mvn -version'
+            }
+        }
+
+        stage('Mavencustom') {
+            tools {
+                java 'Java-17'
+            }
+            steps{
+                echo "hello Maven section this is custom java version"
 
                 sh 'mvn -version'
             }
