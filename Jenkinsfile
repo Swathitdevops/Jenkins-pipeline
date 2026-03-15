@@ -3,7 +3,8 @@ pipeline {
 
     stages{
         stage ('build') {
-            steps{
+            
+            steps {
 
             echo "This is a build stage"
             sh 'hostname -i'
