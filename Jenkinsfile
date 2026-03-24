@@ -4,7 +4,7 @@ pipeline {
         stage('Build')  {
             steps{
 
-                ech "*** Building the application ***"
+                echo "*** Building the application ***"
 
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         }
 
         success {
-            echo "*** This will run once the buils is success"
+            echo "*** This will run once the builds is success"
         }
 
         failure {
