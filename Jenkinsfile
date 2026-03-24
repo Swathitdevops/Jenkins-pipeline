@@ -35,9 +35,9 @@ pipeline {
        }
        stage('Prod'){
          input {
-            message "Are you sure you want to deploy to prod"
-            ok "yes"
-            Submitter "swathitdevops,sreuser"
+            message "Are you sure you want to deploy to prod?"
+            ok 'yes'
+            Submitter 'swathitdevops,sreuser'
 
          }
             steps{
