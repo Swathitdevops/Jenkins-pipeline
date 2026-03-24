@@ -1,56 +1,26 @@
 pipeline {
     agent any
     stages {
-        stage('build'){
+        stage('Build')  {
             steps{
-                echo "*** Building the artifact***"
-            }
-     
-       }
-      stage('sonar'){
-            steps{
-                echo "*** Verifying sonar***"
-            }
-     
-       }
-      stage('Docker'){
-            steps{
-                echo "*** Docker pushing***"
-            }
-     
-       }
 
-       stage('Dev'){
-            steps{
-                echo "*** Deploy to Dev***"
-            }
-     
-       }
+                echo "*** Building the application ***"
 
-       stage('Test'){
-            steps{
-                echo "*** Deploy to Test***"
             }
-     
-       }
-       stage('Prod'){
-        options {
-            timeout(time:300, unit: SECONDS)
         }
-         input {
-            message "Are you sure you want to deploy to prod"
-            ok "yes"
-            submitter "swathitdevops,sreuser"
-
-         }
-            steps{
-                echo "*** Deploy to Prod***"
-            }
-     
-       }
-
-
-
     }
-    
+
+    post {
+        always {
+            echo "*** This will run either success or Failure"
+        }
+
+        success {
+            echo "*** This will run once the buils is success"
+        }
+
+        failure {
+            echo "***This will run if the job fails***"
+        }
+    }
 }
