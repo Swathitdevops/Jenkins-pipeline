@@ -34,10 +34,13 @@ pipeline {
      
        }
        stage('Prod'){
+        options {
+            timeout(time:300, unit: 'seconds')
+        }
          input {
-            message "Are you sure you want to deploy to prod?"
-            ok 'yes'
-            submitter 'swathitdevops,sreuser'
+            message "Are you sure you want to deploy to prod"
+            ok "yes"
+            submitter "swathitdevops,sreuser"
 
          }
             steps{
