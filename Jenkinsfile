@@ -20,20 +20,20 @@ pipeline {
      
        }
 
-       stage('Docker'){
+       stage('Dev'){
             steps{
                 echo "*** Deploy to Dev***"
             }
      
        }
 
-       stage('Docker'){
+       stage('Test'){
             steps{
                 echo "*** Deploy to Test***"
             }
      
        }
-       stage('Docker'){
+       stage('Prod'){
          input {
             message "Are you sure you want to deploy to prod"
             ok "yes"
@@ -45,3 +45,9 @@ pipeline {
             }
      
        }
+
+
+
+    }
+    
+}
