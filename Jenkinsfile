@@ -37,7 +37,7 @@ pipeline {
          input {
             message "Are you sure you want to deploy to prod?"
             ok 'yes'
-            Submitter 'swathitdevops,sreuser'
+            submitter 'swathitdevops,sreuser'
 
          }
             steps{
