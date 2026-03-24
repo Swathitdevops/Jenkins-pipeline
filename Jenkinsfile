@@ -1,30 +1,27 @@
 pipeline {
-    agent any 
-     
-        tools {
-    maven 'Maven-3.8.9'
-}
-     
-   
-    stages{
-
-        stage('Mavendefault') {
+    agent any
+    stages {
+        stage('build'){
             steps{
-                echo "hello Maven default version"
-
-                sh 'mvn -version'
+                echo "*** Building the artifact***"
             }
-        }
-
-        stage('Mavencustom') {
-            tools {
-                jdk 'Java-17'
-            }
+     
+       }
+      stage('sonar'){
             steps{
-                echo "hello Maven section this is custom java version"
-
-                sh 'mvn -version'
+                echo "*** Verifying sonar***"
             }
-        }
+     
+       }
+      stage('Docker'){
+            steps{
+                echo "*** Docker pushing***"
+            }
+     
+       }
+
+
+
     }
+    
 }
