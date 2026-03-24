@@ -3,13 +3,13 @@ pipeline {
         label 'Docker-Slave'
         }
     stages{
-        stage(docker version) {
+        stage(Dockerversion) {
             steps{
                 sh "docker --version"
             }
         }
 
-        stage(Docker Images) {
+        stage(DockerImages) {
             
             steps {
                 sh " docker image"       
