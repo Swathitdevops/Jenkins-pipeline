@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         DOCKER_CREDS = credentials('Dockerhub')
-        DOCKER_REPO = 'devopswithcloudhub/nginx-image'
+         DOCKER_REPO = 'swathitdevops/nginx-image'
     }
 
     stages {
