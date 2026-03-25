@@ -2,26 +2,20 @@ pipeline {
     agent {
         label 'Docker-Slave'
         }
-    stages{
-        stage(Dockerversion) {
-            steps{
-                sh "docker --version"
-            }
-        }
 
-        stage(DockerImages) {
-            
-            steps {
-                sh " docker image"       
-                  }
-        }
-
-        stage(hostname){
-            steps {
-               sh 'hostname -i'
-            }
-        }
-            
+    environment {
+        DOCKER_CREDS = credentials ('Dockerhub')
+        DOCKER_REPO = 'devopswithcloudhub/ngnix-image'
     }
-    
+    stages {
+        stage('DockerBuildProcess'){
+            steps{
+                sh "docker pull nginx"
+                sh "docker tag ngnix ${DOCKER_REPO}:v1"
+                sh "docker login-u ${DOCKER_CREDS_USR} -p $ {DOCKER_CREDS_PSW}"
+                sh "docker push ${DOCKER_REPO}:v1"
+            }
+
+        }
+    }
 }
